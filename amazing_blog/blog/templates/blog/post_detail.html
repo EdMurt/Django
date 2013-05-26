@@ -3,18 +3,20 @@
 
 {% block content %}
 	<h1>{{object.titulo}}</h1>
-	<p>{{object.intro}}</p>
-	<p>{{object.mas}}</p>
+	<p>INTRODUCCION: {{object.intro}}</p>
+	<p>MAS INFO: {{object.mas}}</p>
 
-	COMENTARIOS:
-	{% for c in comments %}
-{#		{%if c.vinculo == object %}#}
-  			<p>TEXTO :{{c.texto}}</p>
-{#   		{%endif%}#}
-	{% endfor %}
-	<p></p>
+	{% if comments %}
+		COMENTARIOS:
+		<p>
+		{% for c in comments %}
+			<p>
+			<li>{{c.texto}}</li>
+			</p>
+		{% endfor %}
+		</p>
+	{%endif%}
 
-{#        <a href="{% url "post_comment" pk=object.pk %}"><button type="submit">Anadir Comentario</button></a>#}
         <a href="{% url "post_update" pk=object.pk %}"><button type="submit">Editar Post</button></a>
         <a href="{% url "post_delete" pk=object.pk %}"><button type="submit">Borrar Post</button></a>
 

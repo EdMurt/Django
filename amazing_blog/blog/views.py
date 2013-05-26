@@ -24,11 +24,10 @@ class PostDetail (DetailView):
 	
 	def get_context_data (self, **kwargs):
 		context = super(PostDetail, self).get_context_data(**kwargs)
-#		context['comments'] = comment.objects.all() # Para el if de la plantilla
 		context['comments'] = comment.objects.filter(vinculo = self.get_object())
 		return context
 
-#class AddCommentView (request):
+#class AddCommentView (FormView):
 #	form_class = commentForm()
 #	template_name = 'blog/post_comment.html'	
 #	def form_valid(self, form):

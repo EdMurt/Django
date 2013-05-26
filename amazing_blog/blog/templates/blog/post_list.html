@@ -1,24 +1,40 @@
 <html>
 	<head>
+		<title>Blog</title>
+		{# Prueba styles para pagina #}
+		<style type="text/css">
+			body { background:#ADF7F0 } 
+			header{ background:#FFFFFF;
+				color:#696CD2;
+				text-align: center;
+				margin: 0 auto;
+				max-width: 99%;
+				 }
+		</style>
 	</head>
 	<body>
-		<a href="{% url "post_list" %}">INICIO</a>
-		{% if user.is_authenticated %}
-			<p>
+		<header>
+			<h1> Post de Django</h1>
+		</header>
+		<nav>
+			<a href="{% url "post_list" %}">INICIO</a>
+			{% if user.is_authenticated %}
 				{{user.username}} 
 				<a href="{% url "post_logout" %}">Logout</a>
-			</p>
-		{% else %}
-			<a href="{% url "post_login" %}">LOGIN</a>
-		{% endif %}
-		{% block content %}
-			<h1> Post de Django</h1>
-			{% for post in object_list %}
-				<h2><a href="{% url "post_detail" pk=post.pk%}"> {{ post.titulo }}</a> </h2>
-
-			{% endfor %}
-			<a href="{% url "post_create" %}"><button type="submit"> Crear Post</button></a>
-
-		{% endblock %}
+			{% else %}
+				<a href="{% url "post_login" %}">LOGIN</a>
+			{% endif %}
+		</nav>
+		<section id="Contenido">
+			{% block content %}
+				{% for post in object_list %}
+					<h2><li><a href="{% url "post_detail" pk=post.pk %}">{{ post.titulo }}</a></li></h2>
+				{% endfor %}
+				<a href="{% url "post_create" %}"><button type="submit">Crear Post</button></a>
+			{% endblock %}
+		</section>
+		<footer>
+			<p> Aprendiendo Django </p>
+		</footer>
 	</body>
 </html>
