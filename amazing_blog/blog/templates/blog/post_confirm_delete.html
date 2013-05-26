@@ -1,0 +1,12 @@
+{% extends "blog/post_list.html" %}
+
+{% block content %}
+
+<h1>Esta seguro de que quiere borrar este Post</h1>
+<form method="Post">
+    {% csrf_token %} {#Para evitar q nos borren de otro sitio#}
+    {{ form }}
+    <button class="submit">Eliminar</button>
+</form>
+
+{% endblock%}

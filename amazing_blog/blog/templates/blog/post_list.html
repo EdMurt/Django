@@ -1,0 +1,24 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<a href="{% url "post_list" %}">INICIO</a>
+		{% if user.is_authenticated %}
+			<p>
+				{{user.username}} 
+				<a href="{% url "post_logout" %}">Logout</a>
+			</p>
+		{% else %}
+			<a href="{% url "post_login" %}">LOGIN</a>
+		{% endif %}
+		{% block content %}
+			<h1> Post de Django</h1>
+			{% for post in object_list %}
+				<h2><a href="{% url "post_detail" pk=post.pk%}"> {{ post.titulo }}</a> </h2>
+
+			{% endfor %}
+			<a href="{% url "post_create" %}"><button type="submit"> Crear Post</button></a>
+
+		{% endblock %}
+	</body>
+</html>

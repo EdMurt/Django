@@ -1,0 +1,10 @@
+{% extends "blog/post_list.html" %}
+
+{% block content %}
+<form method="POST">
+       	{% csrf_token %} {#Para evitar modif de otro sitio#}
+        {{ form }}
+        <a href="{% url "post_list" %}"><button type="submit">Guardar</button></a>
+</form>
+{% endblock%}
+
