@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin # Para interfaz admin
 admin.autodiscover() #Para interfaz admin
-from blog.views import PostList, PostDetail,PostCreate, PostUpdate, PostDelete, AddCommentView
+from blog.views import PostList, PostDetail,PostCreate, PostUpdate, PostDelete# , AddCommentView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = patterns('',
@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     url(r'^post/(?P<pk>\d+)/delete$', login_required(PostDelete.as_view()), name="post_delete"),
 
     url(r'^post/(?P<pk>\d+)$', PostDetail.as_view(), name="post_detail"),
-    url(r'^post/(?P<pk>\d+)/addcomment$', AddCommentView.as_view(), name="post_comment"),
+#    url(r'^post/(?P<pk>\d+)/addcomment$', AddCommentView.as_view(), name="post_comment"),
     url(r'^$',PostList.as_view(), name="post_list"), #Para interfaz vista IMPORTANTE
 
 

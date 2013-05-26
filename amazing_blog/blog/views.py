@@ -28,9 +28,7 @@ class PostDetail (DetailView):
 		context['comments'] = comment.objects.filter(vinculo = self.get_object())
 		return context
 
-
-
-class AddCommentView (request):
+#class AddCommentView (request):
 #	form_class = commentForm()
 #	template_name = 'blog/post_comment.html'	
 #	def form_valid(self, form):

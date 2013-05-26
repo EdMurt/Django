@@ -14,7 +14,7 @@
 	{% endfor %}
 	<p></p>
 
-        <a href="{% url "post_comment" pk=object.pk %}"><button type="submit">Anadir Comentario</button></a>
+{#        <a href="{% url "post_comment" pk=object.pk %}"><button type="submit">Anadir Comentario</button></a>#}
         <a href="{% url "post_update" pk=object.pk %}"><button type="submit">Editar Post</button></a>
         <a href="{% url "post_delete" pk=object.pk %}"><button type="submit">Borrar Post</button></a>
 
